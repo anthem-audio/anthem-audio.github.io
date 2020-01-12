@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
+
+.app {
+  --logo-size: 300px;
+
+  background-color: #202225;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  color: #fffa;
+  font-family: Roboto;
+  font-weight: 100;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.foreground {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.horizontal-center {
+  display: flex;
+  flex-direction: row;
 }
 
-@keyframes App-logo-spin {
+.spacer {
+  flex: 1;
+}
+
+.foreground-content {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+}
+
+.logo {
+  width: var(--logo-size);
+  height: var(--logo-size);
+  animation-name: slidein2;
+  animation-duration: 2s;
+}
+
+.blurb {
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+  overflow: hidden;
+}
+
+.blurb h1 {
+  font-size: 100px;
+  font-weight: 100;
+  margin: 0;
+}
+
+.blurb h2 {
+  font-weight: 100;
+  font-size: 20px;
+  margin-top: 0;
+  margin-left: 40px;
+}
+
+.blurb p {
+  margin-top: 20px;
+  margin-left: 30px;
+  visibility: hidden;
+}
+
+h1, h2 {
+  animation-name: slidein;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+h2 {
+  animation-delay: 0.2s;
+}
+
+@keyframes slidein {
   from {
-    transform: rotate(0deg);
+    transform: translate(-500px, 0); 
+    opacity: 0;
   }
+
   to {
-    transform: rotate(360deg);
+    transform: translate(0, 0);
+    opacity: 100%;
+  }
+}
+
+@keyframes slidein2 {
+  from {
+    transform: translate(200px, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
   }
 }
